@@ -1,9 +1,10 @@
-import {ValidateStep, ValidateArg, Step} from './types'
+import {ValidateStep, ValidateArg, Step} from './types';
+import {transformArg} from './utils';
 
 const argBuilder = (arg: ValidateArg) =>
-  `_.get(obj, "${arg.inspect}") === ${arg.expected}`
+  `_.get(obj, "${arg.inspect}") === ${transformArg(arg.expected)}`
 
-const template = (args: ValidateArg[]) => 
+const template = (args: ValidateArg[]) =>
   `.validate((obj) => ${args.map(argBuilder).join(" && ")})`;
 
 export default function (step: Step) {
