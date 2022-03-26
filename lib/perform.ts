@@ -1,9 +1,11 @@
-import {Step, PerformStep} from './types'
+import { Step, PerformStep } from "./types";
+import {transformArg} from './utils';
 
-const allArgs = (args: string[]) => args.map(arg => `"${arg}"`).join(",")
-const template = (fn: string, args: string[]) => `.perform(${fn}, [${allArgs(args)}])`;
+const allArgs = (args: string[]) => args.map(transformArg).join(",");
+const template = (fn: string, args: string[]) =>
+  `.perform(${fn}, [${allArgs(args)}])`;
 
-export default function(step: Step): string {
+export default function (step: Step): string {
   const input = <PerformStep>step;
-  return template(input.data.fn, input.data.args)
+  return template(input.data.fn, input.data.args);
 }
