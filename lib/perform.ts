@@ -1,5 +1,5 @@
 import { Step, PerformStep } from "./types";
-import {transformArg} from './utils';
+import { transformArg } from "./utils";
 
 const allArgs = (args: string[]) => args.map(transformArg).join(",");
 const template = (fn: string, args: string[]) =>

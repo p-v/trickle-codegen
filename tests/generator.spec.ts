@@ -20,7 +20,7 @@ describe("Generate Trickle", () => {
     ];
 
     expect(generator.generate(steps)).to.be.equal(
-      `Trickle.perform(myFunc, ["x","y"]).transform((obj) => {x: _.get(obj, "x.y.z"),y: _.get(obj, "x.y.zx")}).done()`
+      `Trickle.perform(myFunc, ["x","y"]).transform((obj) => ({x: _.get(obj, "x.y.z"),y: _.get(obj, "x.y.zx")})).done()`
     );
   });
 
@@ -51,7 +51,7 @@ describe("Generate Trickle", () => {
     ];
 
     expect(generator.generate(steps)).to.be.equal(
-      `Trickle.perform(myFunc, ["x","y"]).transform((obj) => {x: _.get(obj, "x.y.z"),y: _.get(obj, "x.y.zx")}).validate((obj) => _.get(obj, "x") === "abc" && _.get(obj, "y") === 3).done()`
+      `Trickle.perform(myFunc, ["x","y"]).transform((obj) => ({x: _.get(obj, "x.y.z"),y: _.get(obj, "x.y.zx")})).validate((obj) => _.get(obj, "x") === "abc" && _.get(obj, "y") === 3).done()`
     )
   });
 });

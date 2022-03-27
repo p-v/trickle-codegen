@@ -9,7 +9,7 @@ export default function (step: Step) {
     const args = data.args
       .map(({ to, from }) => `${to}: _.get(obj, "${from}")`)
       .join(",");
-    fn = `(obj) => {${args}}`;
+    fn = `(obj) => ({${args}})`;
   } else {
     fn = `(obj) => _.get(obj, "${data.args}")`;
   }
